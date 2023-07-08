@@ -13,13 +13,15 @@ func _ready():
 
 func _on_health_changed(amount, max):
 	
-	await _pause_juice_coroutine()
+	await _pause_juice_coroutine(value - amount)
 	
 	max_value = max
 	value = amount
 
-func _pause_juice_coroutine():
+func _pause_juice_coroutine(delta):
 	
 	get_tree().paused = true
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().create_timer(0.01 * delta).timeout
 	get_tree().paused = false
+	
+	$CPUParticles2D.emitting = true

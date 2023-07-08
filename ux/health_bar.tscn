@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://qs1jfcm7hsx4"]
+[gd_scene load_steps=3 format=3 uid="uid://qs1jfcm7hsx4"]
 
 [ext_resource type="Script" path="res://ux/health_bar.gd" id="1_nl5c8"]
+[ext_resource type="Texture2D" uid="uid://bjt0168kxffio" path="res://assets/icon.svg" id="2_fk22x"]
 
 [node name="health_bar" type="ProgressBar"]
 script = ExtResource("1_nl5c8")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 0.6
+texture = ExtResource("2_fk22x")
+emission_shape = 1
+emission_sphere_radius = 16.51
+spread = 180.0
+initial_velocity_min = 197.4
+initial_velocity_max = 227.71

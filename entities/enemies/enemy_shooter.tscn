@@ -23,6 +23,9 @@ weapon = NodePath("../weapon")
 
 [node name="weapon" parent="StaticBody2D8" instance=ExtResource("2_8butt")]
 
+[node name="CycleTimer" parent="StaticBody2D8/weapon" index="1"]
+wait_time = 2.0
+
 [node name="health_bar" parent="StaticBody2D8" node_paths=PackedStringArray("health") instance=ExtResource("3_0yhvw")]
 health = NodePath("../health")
 metadata/_edit_use_anchors_ = true

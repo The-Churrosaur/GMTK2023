@@ -41,7 +41,6 @@ shape = SubResource("CircleShape2D_4cl0b")
 
 [node name="Spinner" parent="." node_paths=PackedStringArray("body") instance=ExtResource("5_7705p")]
 body = NodePath("..")
-factor = 0.0002
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Spinner"]
 shape = SubResource("CircleShape2D_yfap6")
