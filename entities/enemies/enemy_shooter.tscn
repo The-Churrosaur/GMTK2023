@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5na2wh4vth4d"]
+
+[ext_resource type="PackedScene" uid="uid://djx50h4op6aek" path="res://components/shooter.tscn" id="1_g4kld"]
+[ext_resource type="PackedScene" uid="uid://c3hosnvrv7h7k" path="res://components/weapon.tscn" id="2_8butt"]
+[ext_resource type="PackedScene" uid="uid://qs1jfcm7hsx4" path="res://ux/health_bar.tscn" id="3_0yhvw"]
+[ext_resource type="PackedScene" uid="uid://biwg0k8bbghht" path="res://components/health.tscn" id="4_fo0nq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_206r6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4fywm"]
+
+[node name="enemy_shooter" type="Node2D"]
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="." groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D8"]
+shape = SubResource("CapsuleShape2D_206r6")
+
+[node name="shooter" parent="StaticBody2D8" node_paths=PackedStringArray("weapon") instance=ExtResource("1_g4kld")]
+weapon = NodePath("../weapon")
+
+[node name="weapon" parent="StaticBody2D8" instance=ExtResource("2_8butt")]
+
+[node name="health_bar" parent="StaticBody2D8" node_paths=PackedStringArray("health") instance=ExtResource("3_0yhvw")]
+health = NodePath("../health")
+metadata/_edit_use_anchors_ = true
+
+[node name="health" parent="StaticBody2D8" node_paths=PackedStringArray("hitbox") instance=ExtResource("4_fo0nq")]
+hitbox = NodePath("../Area2D")
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D8/Area2D"]
+shape = SubResource("CapsuleShape2D_4fywm")
+
+[editable path="StaticBody2D8/shooter"]
+[editable path="StaticBody2D8/weapon"]

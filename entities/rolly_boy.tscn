@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://rmwrkk88g2xf"]
+
+[ext_resource type="Script" path="res://entities/rolly_boy.gd" id="1_arojv"]
+[ext_resource type="Texture2D" uid="uid://bjt0168kxffio" path="res://assets/icon.svg" id="2_odeph"]
+[ext_resource type="PackedScene" uid="uid://biwg0k8bbghht" path="res://components/health.tscn" id="3_xthn4"]
+[ext_resource type="PackedScene" uid="uid://qs1jfcm7hsx4" path="res://ux/health_bar.tscn" id="4_twliv"]
+[ext_resource type="PackedScene" uid="uid://c2i6r0360q012" path="res://components/spinny_damager.tscn" id="5_7705p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5dg4s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4cl0b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yfap6"]
+radius = 30.0
+
+[node name="RollyBoy" type="RigidBody2D" groups=["Player"]]
+script = ExtResource("1_arojv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="health_bar" parent="MarginContainer" node_paths=PackedStringArray("health") instance=ExtResource("4_twliv")]
+layout_mode = 2
+health = NodePath("../../health")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5dg4s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_odeph")
+
+[node name="health" parent="." node_paths=PackedStringArray("hitbox") instance=ExtResource("3_xthn4")]
+hitbox = NodePath("../Hitbox")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_4cl0b")
+
+[node name="Spinner" parent="." node_paths=PackedStringArray("body") instance=ExtResource("5_7705p")]
+body = NodePath("..")
+factor = 0.0002
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Spinner"]
+shape = SubResource("CircleShape2D_yfap6")

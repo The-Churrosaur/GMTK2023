@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2i6r0360q012"]
+
+[ext_resource type="PackedScene" uid="uid://b25do1ofe6w32" path="res://components/damage_area.tscn" id="1_rnn8k"]
+[ext_resource type="Script" path="res://components/spinny_damager.gd" id="2_ogkdy"]
+
+[node name="DamageSpinner" instance=ExtResource("1_rnn8k")]
+script = ExtResource("2_ogkdy")
+factor = 0.0002

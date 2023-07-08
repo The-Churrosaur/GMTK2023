@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dee4huvdlewq0"]
+
+[ext_resource type="PackedScene" uid="uid://btqakj4fevhhp" path="res://entities/turning_platform_2d.tscn" id="1_k1505"]
+[ext_resource type="Script" path="res://maps/test_map_2d.gd" id="1_njuyc"]
+[ext_resource type="PackedScene" uid="uid://rmwrkk88g2xf" path="res://entities/rolly_boy.tscn" id="2_pa7l0"]
+
+[node name="test_map_2d" type="Node2D"]
+position = Vector2(521, 355)
+script = ExtResource("1_njuyc")
+
+[node name="turning_platform" parent="." instance=ExtResource("1_k1505")]
+
+[node name="Camera2D" type="Camera2D" parent="turning_platform"]
+
+[node name="RollyBoy" parent="." instance=ExtResource("2_pa7l0")]
